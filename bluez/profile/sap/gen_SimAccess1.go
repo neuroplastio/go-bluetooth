@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+	"github.com/neuroplastio/go-bluetooth/bluez"
+	"github.com/neuroplastio/go-bluetooth/props"
+	"github.com/neuroplastio/go-bluetooth/util"
 )
 
 var SimAccess1Interface = "org.bluez.SimAccess1"
@@ -38,7 +38,6 @@ func NewSimAccess1(objectPath dbus.ObjectPath) (*SimAccess1, error) {
 
 /*
 SimAccess1 Sim Access Profile hierarchy
-
 */
 type SimAccess1 struct {
 	client                 *bluez.Client
@@ -59,12 +58,12 @@ type SimAccess1Properties struct {
 	Connected bool
 }
 
-//Lock access to properties
+// Lock access to properties
 func (p *SimAccess1Properties) Lock() {
 	p.lock.Lock()
 }
 
-//Unlock access to properties
+// Unlock access to properties
 func (p *SimAccess1Properties) Unlock() {
 	p.lock.Unlock()
 }
@@ -222,8 +221,8 @@ func (a *SimAccess1) UnwatchProperties(ch chan *bluez.PropertyChanged) error {
 
 /*
 Disconnect 			Disconnects SAP client from the server.
-			Possible errors: org.bluez.Error.Failed
 
+	Possible errors: org.bluez.Error.Failed
 */
 func (a *SimAccess1) Disconnect() error {
 	return a.client.Call("Disconnect", 0).Store()

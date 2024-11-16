@@ -4,8 +4,8 @@ import (
 	"path"
 	"testing"
 
-	"github.com/muka/go-bluetooth/gen/filters"
-	"github.com/muka/go-bluetooth/gen/util"
+	"github.com/neuroplastio/go-bluetooth/gen/filters"
+	"github.com/neuroplastio/go-bluetooth/gen/util"
 	"github.com/stretchr/testify/assert"
 )
 

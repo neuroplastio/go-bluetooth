@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+	"github.com/neuroplastio/go-bluetooth/bluez"
+	"github.com/neuroplastio/go-bluetooth/props"
+	"github.com/neuroplastio/go-bluetooth/util"
 )
 
 var Thermometer1Interface = "org.bluez.Thermometer1"
@@ -38,7 +38,6 @@ func NewThermometer1(objectPath dbus.ObjectPath) (*Thermometer1, error) {
 
 /*
 Thermometer1 Health Thermometer Profile hierarchy
-
 */
 type Thermometer1 struct {
 	client                 *bluez.Client
@@ -82,12 +81,12 @@ type Thermometer1Properties struct {
 	Minimum uint16
 }
 
-//Lock access to properties
+// Lock access to properties
 func (p *Thermometer1Properties) Lock() {
 	p.lock.Lock()
 }
 
-//Unlock access to properties
+// Unlock access to properties
 func (p *Thermometer1Properties) Unlock() {
 	p.lock.Unlock()
 }

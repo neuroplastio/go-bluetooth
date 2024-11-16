@@ -1,7 +1,10 @@
 package btmgmt
 
-import "testing"
-import log "github.com/sirupsen/logrus"
+import (
+	"testing"
+
+	log "github.com/sirupsen/logrus"
+)
 
 func TestGetAdapters(t *testing.T) {
 

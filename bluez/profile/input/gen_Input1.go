@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+	"github.com/neuroplastio/go-bluetooth/bluez"
+	"github.com/neuroplastio/go-bluetooth/props"
+	"github.com/neuroplastio/go-bluetooth/util"
 )
 
 var Input1Interface = "org.bluez.Input1"
@@ -38,7 +38,6 @@ func NewInput1(objectPath dbus.ObjectPath) (*Input1, error) {
 
 /*
 Input1 Input hierarchy
-
 */
 type Input1 struct {
 	client                 *bluez.Client
@@ -78,12 +77,12 @@ type Input1Properties struct {
 	ReconnectMode string
 }
 
-//Lock access to properties
+// Lock access to properties
 func (p *Input1Properties) Lock() {
 	p.lock.Lock()
 }
 
-//Unlock access to properties
+// Unlock access to properties
 func (p *Input1Properties) Unlock() {
 	p.lock.Unlock()
 }

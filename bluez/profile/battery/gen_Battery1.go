@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+	"github.com/neuroplastio/go-bluetooth/bluez"
+	"github.com/neuroplastio/go-bluetooth/props"
+	"github.com/neuroplastio/go-bluetooth/util"
 )
 
 var Battery1Interface = "org.bluez.Battery1"
@@ -38,7 +38,6 @@ func NewBattery1(objectPath dbus.ObjectPath) (*Battery1, error) {
 
 /*
 Battery1 Battery hierarchy
-
 */
 type Battery1 struct {
 	client                 *bluez.Client
@@ -69,12 +68,12 @@ type Battery1Properties struct {
 	Source string
 }
 
-//Lock access to properties
+// Lock access to properties
 func (p *Battery1Properties) Lock() {
 	p.lock.Lock()
 }
 
-//Unlock access to properties
+// Unlock access to properties
 func (p *Battery1Properties) Unlock() {
 	p.lock.Unlock()
 }

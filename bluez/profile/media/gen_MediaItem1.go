@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+	"github.com/neuroplastio/go-bluetooth/bluez"
+	"github.com/neuroplastio/go-bluetooth/props"
+	"github.com/neuroplastio/go-bluetooth/util"
 )
 
 var MediaItem1Interface = "org.bluez.MediaItem1"
@@ -62,7 +62,6 @@ func NewMediaItem1Controller(objectPath dbus.ObjectPath) (*MediaItem1, error) {
 
 /*
 MediaItem1 MediaItem1 hierarchy
-
 */
 type MediaItem1 struct {
 	client                 *bluez.Client
@@ -174,12 +173,12 @@ type MediaItem1Properties struct {
 	Type string
 }
 
-//Lock access to properties
+// Lock access to properties
 func (p *MediaItem1Properties) Lock() {
 	p.lock.Lock()
 }
 
-//Unlock access to properties
+// Unlock access to properties
 func (p *MediaItem1Properties) Unlock() {
 	p.lock.Unlock()
 }
@@ -505,9 +504,9 @@ func (a *MediaItem1) UnwatchProperties(ch chan *bluez.PropertyChanged) error {
 
 /*
 Play 			Play item
-			Possible Errors: org.bluez.Error.NotSupported
-					 org.bluez.Error.Failed
 
+	Possible Errors: org.bluez.Error.NotSupported
+			 org.bluez.Error.Failed
 */
 func (a *MediaItem1) Play() error {
 	return a.client.Call("Play", 0).Store()
@@ -515,9 +514,9 @@ func (a *MediaItem1) Play() error {
 
 /*
 AddtoNowPlaying 			Add item to now playing list
-			Possible Errors: org.bluez.Error.NotSupported
-					 org.bluez.Error.Failed
 
+	Possible Errors: org.bluez.Error.NotSupported
+			 org.bluez.Error.Failed
 */
 func (a *MediaItem1) AddtoNowPlaying() error {
 	return a.client.Call("AddtoNowPlaying", 0).Store()
