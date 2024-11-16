@@ -3,6 +3,9 @@ package service
 import "github.com/neuroplastio/go-bluetooth/bluez/profile/agent"
 
 func (app *App) createAgent() (agent.Agent1Client, error) {
+	if app.Options.CreateAgent != nil {
+		return app.Options.CreateAgent()
+	}
 	a := agent.NewDefaultSimpleAgent()
 	return a, nil
 }

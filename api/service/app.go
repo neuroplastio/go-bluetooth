@@ -28,6 +28,7 @@ type AppOptions struct {
 	AgentSetAsDefault bool
 	UUIDSuffix        string
 	UUID              string
+	CreateAgent       func() (agent.Agent1Client, error)
 }
 
 // NewApp initialize a new bluetooth service (app)
@@ -88,10 +89,6 @@ type App struct {
 }
 
 func (app *App) init() error {
-
-	// log.Tracef("Exposing %s", app.Path())
-
-	// log.Trace("Load adapter")
 	a, err := adapter.NewAdapter1FromAdapterID(app.adapterID)
 	if err != nil {
 		return err
