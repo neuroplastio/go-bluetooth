@@ -126,6 +126,13 @@ type Device1Properties struct {
 	Blocked bool
 
 	/*
+		Bonded Indicates if the remote device is bonded. Bonded means
+				the information exchanged on pairing process has been
+				stored and will be persisted.
+	*/
+	Bonded bool
+
+	/*
 		Class The Bluetooth class of device of the remote device.
 	*/
 	Class uint32
@@ -182,7 +189,10 @@ type Device1Properties struct {
 	Name string
 
 	/*
-		Paired Indicates if the remote device is paired.
+		Paired Indicates if the remote device is paired. Paired means
+				the pairing process where devices exchange the
+				information to establish an encrypted connection has
+				been completed.
 	*/
 	Paired bool
 
@@ -203,6 +213,11 @@ type Device1Properties struct {
 				resolved.
 	*/
 	ServicesResolved bool
+
+	/*
+		Sets
+	*/
+	Sets []SetsItem
 
 	/*
 		Trusted Indicates if the remote is seen as trusted. This
@@ -345,6 +360,20 @@ func (a *Device1) SetBlocked(v bool) error {
 // GetBlocked get Blocked value
 func (a *Device1) GetBlocked() (bool, error) {
 	v, err := a.GetProperty("Blocked")
+	if err != nil {
+		return false, err
+	}
+	return v.Value().(bool), nil
+}
+
+// SetBonded set Bonded value
+func (a *Device1) SetBonded(v bool) error {
+	return a.SetProperty("Bonded", v)
+}
+
+// GetBonded get Bonded value
+func (a *Device1) GetBonded() (bool, error) {
+	v, err := a.GetProperty("Bonded")
 	if err != nil {
 		return false, err
 	}
@@ -503,6 +532,20 @@ func (a *Device1) GetServicesResolved() (bool, error) {
 		return false, err
 	}
 	return v.Value().(bool), nil
+}
+
+// SetSets set Sets value
+func (a *Device1) SetSets(v []SetsItem) error {
+	return a.SetProperty("Sets", v)
+}
+
+// GetSets get Sets value
+func (a *Device1) GetSets() ([]SetsItem, error) {
+	v, err := a.GetProperty("Sets")
+	if err != nil {
+		return []SetsItem{}, err
+	}
+	return v.Value().([]SetsItem), nil
 }
 
 // SetTrusted set Trusted value

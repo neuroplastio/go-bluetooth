@@ -11,5 +11,7 @@ Once a monitoring job is activated by BlueZ, the client can expect to get
 notified on the targeted advertisements no matter if there is an ongoing
 discovery session (a discovery session is started/stopped with methods in
 org.bluez.Adapter1 interface).
+
+
 */
 package advertisement_monitor
